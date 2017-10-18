@@ -12,7 +12,7 @@ int findMaxCounterId()
 { ifstream fin;
   fin.open("sales.txt");
   
-  int counterId, _;
+  int counterId, _; //Often _ is used for variables which are not going to be used.
   int maximalCounterId = 0;
   
   while (fin >> counterId >> _)
@@ -24,7 +24,7 @@ int findMaxCounterId()
   return maximalCounterId;
 }
 
-double totalForCounter(int counterId, double pricePerLiter)
+double totalForCounter(int counterId)
 { ifstream fin;
   fin.open("sales.txt");
   
@@ -42,17 +42,15 @@ double totalForCounter(int counterId, double pricePerLiter)
   
   fin.close();
   
-  return totalQuantityForCounter * pricePerLiter;
+  return totalQuantityForCounter;
 }
 
 void writeAverages()
 { ofstream fout;
   fout.open("averages.bin", ios::binary);
   
-  const double pricePerLiter = 1.1;
-  
   for (int i = 1; i <= maxCounterId; i++)
-  { double averageQuantityForCounter = totalForCounter(i, pricePerLiter);
+  { double averageQuantityForCounter = totalForCounter(i);
     if (numberOfCounters != 0)
       averageQuantityForCounter /= numberOfCounters;
     
