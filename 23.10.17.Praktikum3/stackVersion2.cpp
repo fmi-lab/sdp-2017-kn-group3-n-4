@@ -22,6 +22,7 @@ class Stack
   T top() const;
   int length();
   bool isEmpty() const;
+  void print();
 };
 
 template<typename T>
@@ -31,11 +32,8 @@ Stack<T>::Stack()
 
 template<typename T>
 Stack<T>::~Stack()
-{ while (el != NULL)
-  { elem<T>* pred = (*el).link;
-    delete el;
-    el = pred;
-  }
+{ while (!isEmpty())
+    pop();
 }
 
 template<typename T>
@@ -61,7 +59,7 @@ void Stack<T>::push(const T &newElement)
 
 template<typename T>
 void Stack<T>::pop()
-{ if (el == NULL)
+{ if (isEmpty())
   { cerr << "There are no elements in the stack !" << endl;
     exit(1);
   }
@@ -73,7 +71,7 @@ void Stack<T>::pop()
 
 template<typename T>
 T Stack<T>::top() const
-{ if (el == NULL)
+{ if (isEmpty())
   { cerr << "There are no elements in the stack !" << endl;
     exit(1);
   }
@@ -84,11 +82,9 @@ T Stack<T>::top() const
 template<typename T>
 int Stack<T>::length()
 { int br = 0;
-  while (el != NULL) //While we have elements in the stack.
+  while (!isEmpty()) //While we have elements in the stack.
   { br++;
-    elem<T>* pred = el->link;
-    delete el;
-    el = pred;
+    pop();
   }
   
   return br;
@@ -97,6 +93,14 @@ int Stack<T>::length()
 template<typename T>
 bool Stack<T>::isEmpty() const
 { return el == NULL;
+}
+
+template<typename T>
+void Stack<T>::print()
+{ while (!isEmpty())
+  { cout << top() << endl;
+    pop();
+  }
 }
 
 int main()
@@ -120,6 +124,15 @@ int main()
   
   cout << "The length of the stack is: " << s.length() << endl;
   cout << "... and now the length of the stack is: " << s.length() << endl << endl;
+  
+  cout << "Pushing element 9 into stack s..." << endl;
+  s.push(9);
+  cout << "Pushing element 15 into stack s..." << endl << endl;
+  s.push(15);
+  
+  cout << "Stack s contains: " << endl;
+  s.print();
+  cout << endl;
   
   cout << "Is stack s empty: " << s.isEmpty() << endl;
   
