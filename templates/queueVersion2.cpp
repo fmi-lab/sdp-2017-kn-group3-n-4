@@ -133,8 +133,3 @@ void Queue<T>::print()
     pop();
   }
 }
-
-int main()
-{ 
-  return 0;
-}
