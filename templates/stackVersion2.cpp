@@ -102,39 +102,3 @@ void Stack<T>::print()
     pop();
   }
 }
-
-int main()
-{ 
-  Stack<int> s;
-  
-  cout << boolalpha;
-  cout << "Is stack s empty: " << s.isEmpty() << endl << endl;
-  
-  cout << "Pushing element 3 into stack s..." << endl;
-  s.push(3);
-  cout << "Pushing element 7 into stack s..." << endl << endl;
-  s.push(7);
-  
-  cout << "Is stack s empty: " << s.isEmpty() << endl << endl;
-  
-  cout << "The top element of the stack is: " << s.top() << endl;
-  cout << "Deleting element from the stack s..." << endl << endl;
-  s.pop();
-  cout << "The top element of the stack is: " << s.top() << endl << endl;
-  
-  cout << "The length of the stack is: " << s.length() << endl;
-  cout << "... and now the length of the stack is: " << s.length() << endl << endl;
-  
-  cout << "Pushing element 9 into stack s..." << endl;
-  s.push(9);
-  cout << "Pushing element 15 into stack s..." << endl << endl;
-  s.push(15);
-  
-  cout << "Stack s contains: " << endl;
-  s.print();
-  cout << endl;
-  
-  cout << "Is stack s empty: " << s.isEmpty() << endl;
-  
-  return 0;
-}
