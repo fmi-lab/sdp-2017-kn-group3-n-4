@@ -20,6 +20,10 @@ public:
 
     bool empty() const;
     T rootTree() const;
+    node_bin<T>* getRootPointer() const
+    {
+        return root;
+    }
     binOrdTree leftTree() const;
     binOrdTree rightTree() const;
     void create3(const T&, const binOrdTree&, const binOrdTree&);
